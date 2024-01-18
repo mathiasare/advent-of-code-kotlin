@@ -2,16 +2,6 @@ package y2023.day1
 
 import util.readFileLines
 
-fun main() {
-    dayOne()
-}
-
-fun dayOne() {
-    val lines = readFileLines("inputD1")
-    println("Part 1: " + calibrateV1(lines))
-    println("Part 2: " + calibrateV2(lines))
-}
-
 val numTable: Map<String, String> = hashMapOf(
     Pair("one", "1"),
     Pair("two", "2"),
@@ -24,7 +14,17 @@ val numTable: Map<String, String> = hashMapOf(
     Pair("nine", "9")
 )
 
-fun calibrateV1(lines: List<String>): Int {
+fun main() {
+    dayOne()
+}
+
+fun dayOne() {
+    val lines = readFileLines("inputD1")
+    println("Part 1: " + solvePartOne(lines))
+    println("Part 2: " + solvePartTwo(lines))
+}
+
+fun solvePartOne(lines: List<String>): Int {
     return lines.sumOf { it ->
         val first = it.first { it.isDigit() }
         val last = it.last { it.isDigit() }
@@ -32,7 +32,7 @@ fun calibrateV1(lines: List<String>): Int {
     }
 }
 
-fun calibrateV2(lines: List<String>): Int {
+fun solvePartTwo(lines: List<String>): Int {
     return lines.sumOf { it ->
         var buff = ""
         var digits = ""

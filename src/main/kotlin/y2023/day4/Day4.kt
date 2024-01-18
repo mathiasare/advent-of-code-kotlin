@@ -13,8 +13,6 @@ fun dayFour() {
     println("Part 2: " + solvePartTwo(lines))
 }
 
-data class LottoCard(val cardNum: Int, val givenNumbers: List<String>, val winningNumbers: List<String>)
-
 fun solvePartOne(lines: List<String>): Int {
     return lines.map(::readLottoCard).map(::getLottoCardValue).sum()
 }
@@ -41,7 +39,6 @@ fun readLottoCard(line: String): LottoCard {
     }
 }
 
-
 fun getLottoCardValue(lottoCard: LottoCard): Int {
     var score = 0
     val winningSet = lottoCard.winningNumbers.toSet()
@@ -53,6 +50,7 @@ fun getLottoCardValue(lottoCard: LottoCard): Int {
     }
     return score
 }
+
 
 fun countLottoCardsP2(lines: List<String>): Int {
     var winsCount = lines.size
@@ -89,3 +87,5 @@ fun getLottoCardWinCount(lottoCard: LottoCard): Int {
 }
 
 fun incrementScore(score: Int) = if (score == 0) 1 else score * 2
+
+data class LottoCard(val cardNum: Int, val givenNumbers: List<String>, val winningNumbers: List<String>)

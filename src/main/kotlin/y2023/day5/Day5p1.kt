@@ -53,7 +53,6 @@ fun readConversionTablesV1(lines: List<String>): ConversionTable {
     return startTable
 }
 
-
 open class RangeMapping(val sourceRange: LongRange, val destinationRange: LongRange, val conversionRate: Long) {
 
     fun inSourceRange(n: Long) = n in sourceRange

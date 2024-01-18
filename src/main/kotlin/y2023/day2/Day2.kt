@@ -2,13 +2,6 @@ package y2023.day2
 
 import util.readFileLines
 
-data class Game(
-    val id: Int,
-    val rounds: List<CubeSet>
-)
-
-data class CubeSet(var red: Int, var blue: Int, var green: Int)
-
 val colorPairRegex = "([0-9]+) ([a-z]+),?".toRegex()
 
 fun main() {
@@ -19,6 +12,13 @@ fun dayTwo() {
     val lines = readFileLines("inputD2")
     println("Part 1: " + solvePartOne(lines))
     println("Part 2: " + solvePartTwo(lines))
+}
+
+fun solvePartOne(lines: List<String>): Int {
+    return lines
+        .map(::readGame)
+        .filter(::isValidGame)
+        .sumOf { it.id }
 }
 
 fun solvePartTwo(lines: List<String>): Int {
@@ -37,13 +37,6 @@ fun findMinCubeSet(game: Game): CubeSet {
             maxBy { it.green }.green
         )
     }
-}
-
-fun solvePartOne(lines: List<String>): Int {
-    return lines
-        .map(::readGame)
-        .filter(::isValidGame)
-        .sumOf { it.id }
 }
 
 fun powerOfCubeSet(cubeSet: CubeSet) = cubeSet.red * cubeSet.green * cubeSet.blue
@@ -74,3 +67,10 @@ fun readRound(roundsData: String): CubeSet {
     }
     return round
 }
+
+data class Game(
+    val id: Int,
+    val rounds: List<CubeSet>
+)
+
+data class CubeSet(var red: Int, var blue: Int, var green: Int)

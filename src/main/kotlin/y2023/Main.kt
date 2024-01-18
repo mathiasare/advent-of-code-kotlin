@@ -30,7 +30,7 @@ fun main() {
 
 fun runAllDaysWithTime(vararg fns: () -> Unit) {
     for ((day, fn) in fns.withIndex()) {
-        println("Day $day")
+        println("Day ${day + 1}")
 
         val start = Instant.now()
         fn.invoke()

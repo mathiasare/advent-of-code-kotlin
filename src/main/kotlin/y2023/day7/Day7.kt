@@ -3,60 +3,6 @@ package y2023.day7
 import util.readFileLines
 
 
-fun main() {
-    daySeven()
-}
-
-fun daySeven() {
-    val lines = readFileLines("inputD7")
-    println("Part 1: " + solvePartOne(lines))
-    println("Part 2: " + solvePartTwo(lines))
-}
-
-fun solvePartOne(lines: List<String>): Long {
-    return lines.asSequence().map(::readHand)
-        .sorted()
-        .withIndex()
-        .map { (rank, hand) -> (rank + 1) * hand.bid }
-        .sum().toLong()
-}
-
-fun solvePartTwo(lines: List<String>): Long {
-    return lines.asSequence().map(::readHandV2)
-        .sorted()
-        .withIndex()
-        .map { (rank, hand) -> (rank + 1) * hand.bid }
-        .sum().toLong()
-}
-
-fun readHand(line: String): Hand {
-    val (cardsStr, bidStr) = line.split(" ")
-
-    val cards = mutableListOf<Int>()
-    for (c in cardsStr) {
-        if (c.isDigit()) {
-            cards.add(c.digitToInt())
-        } else {
-            cards.add(cardToValMapV1[c]!!)
-        }
-    }
-    return Hand(cards, bidStr.toInt())
-}
-
-fun readHandV2(line: String): HandV2 {
-    val (cardsStr, bidStr) = line.split(" ")
-
-    val cards = mutableListOf<Int>()
-    for (c in cardsStr) {
-        if (c.isDigit()) {
-            cards.add(c.digitToInt())
-        } else {
-            cards.add(cardToValMapV2[c]!!)
-        }
-    }
-    return HandV2(cards, bidStr.toInt())
-}
-
 val cardToValMapV1 = mapOf(
     Pair('T', 10),
     Pair('J', 11),
@@ -72,6 +18,56 @@ val cardToValMapV2 = mapOf(
     Pair('K', 13),
     Pair('A', 14)
 )
+
+fun main() {
+    daySeven()
+}
+
+fun daySeven() {
+    val lines = readFileLines("inputD7")
+    println("Part 1: " + solvePartOne(lines))
+    println("Part 2: " + solvePartTwo(lines))
+}
+
+fun solvePartOne(lines: List<String>): Long {
+    return lines.asSequence().map(::readHandV1)
+        .sorted()
+        .withIndex()
+        .map { (rank, hand) -> (rank + 1) * hand.bid }
+        .sum().toLong()
+}
+
+fun solvePartTwo(lines: List<String>): Long {
+    return lines.asSequence().map(::readHandV2)
+        .sorted()
+        .withIndex()
+        .map { (rank, hand) -> (rank + 1) * hand.bid }
+        .sum().toLong()
+}
+
+fun readHandData(line: String, cardToValMap: Map<Char, Int>): Pair<List<Int>, Int> {
+    val (cardsStr, bidStr) = line.split(" ")
+
+    val cards = mutableListOf<Int>()
+    for (c in cardsStr) {
+        if (c.isDigit()) {
+            cards.add(c.digitToInt())
+        } else {
+            cards.add(cardToValMap[c]!!)
+        }
+    }
+    return Pair(cards, bidStr.toInt())
+}
+
+fun readHandV1(line: String): Hand {
+    val (cards, bid) = readHandData(line, cardToValMapV1)
+    return Hand(cards, bid)
+}
+
+fun readHandV2(line: String): HandV2 {
+    val (cards, bid) = readHandData(line, cardToValMapV2)
+    return HandV2(cards, bid)
+}
 
 enum class Combination {
     HIGH_CARD,
@@ -121,7 +117,7 @@ open class Hand(val cards: List<Int>, val bid: Int) : Comparable<Hand> {
         }
     }
 
-    fun maxOccurences(distincts: List<Int>, all: List<Int>): Int {
+    private fun maxOccurences(distincts: List<Int>, all: List<Int>): Int {
         return distincts.map { el -> all.count { it == el } }.max()
     }
 
