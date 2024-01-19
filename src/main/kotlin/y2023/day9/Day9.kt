@@ -27,26 +27,19 @@ fun solvePartTwo(lines: List<String>): Long {
 }
 
 fun findNextValueInSequence(seq: List<Long>): Long {
-    val lastValues = mutableListOf(seq.last())
-    var curSeq = seq
-    while (curSeq.any { it != 0L }) {
-        curSeq = derivedSequence(curSeq)
-        lastValues.add(curSeq.last())
+    if (seq.all { it == 0L }) {
+        return 0
     }
-    return lastValues.sum()
+
+    return seq.last() + findNextValueInSequence(derivedSequence(seq))
 }
 
 fun findPrevValueInSequence(seq: List<Long>): Long {
-    val firstValues = mutableListOf(seq.first())
-    var curSeq = seq
-    while (curSeq.any { it != 0L }) {
-        curSeq = derivedSequence(curSeq)
-        firstValues.add(curSeq.first())
+    if (seq.all { it == 0L }) {
+        return 0
     }
 
-    return firstValues.foldRight(0) { l, acc ->
-        l - acc
-    }
+    return seq.first() - findPrevValueInSequence(derivedSequence(seq))
 }
 
 fun derivedSequence(seq: List<Long>): List<Long> {
