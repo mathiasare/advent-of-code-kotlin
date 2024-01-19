@@ -40,8 +40,8 @@ fun runAllDaysWithTime(vararg fns: () -> Unit) {
         fn.invoke()
         val end = Instant.now()
 
-        val mills = Duration.between(start, end).toMillis()
-        println("Executed in: ${mills}ms")
+        val millis = Duration.between(start, end).toMillis()
+        println("Executed in: ${millis}ms")
         println("*".repeat(20))
     }
 }
