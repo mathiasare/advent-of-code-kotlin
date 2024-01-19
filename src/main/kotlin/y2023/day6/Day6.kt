@@ -6,10 +6,10 @@ import kotlin.math.pow
 import kotlin.math.sqrt
 
 fun main() {
-    daySix()
+    day6()
 }
 
-fun daySix() {
+fun day6() {
     val lines = readFileLines("inputD6")
     println("Part 1: " + solvePartOne(lines))
     println("Part 2: " + solvePartTwo(lines))

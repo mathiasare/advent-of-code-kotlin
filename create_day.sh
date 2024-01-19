@@ -19,6 +19,10 @@ cp -r "./src/main/kotlin/template/day/." "${destination}"
 # Rename Day.kt to Day<day number>.kt
 mv "${destination}/Day.kt" "${destination}/Day${day}.kt"
 
+# Rename package
 sed -i "s/package template.day/package y${year}.day${day}/" "${destination}/Day${day}.kt"
+
+# Rename day function
+sed -i "s/day(/day${day}(/g" "${destination}/Day${day}.kt"
 
 echo "Folder and file copied and renamed successfully to ${destination}"

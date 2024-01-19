@@ -5,10 +5,10 @@ import util.readFileLines
 val colorPairRegex = "([0-9]+) ([a-z]+),?".toRegex()
 
 fun main() {
-    dayTwo()
+    day2()
 }
 
-fun dayTwo() {
+fun day2() {
     val lines = readFileLines("inputD2")
     println("Part 1: " + solvePartOne(lines))
     println("Part 2: " + solvePartTwo(lines))
@@ -16,6 +16,7 @@ fun dayTwo() {
 
 fun solvePartOne(lines: List<String>): Int {
     return lines
+        .asSequence()
         .map(::readGame)
         .filter(::isValidGame)
         .sumOf { it.id }
@@ -23,6 +24,7 @@ fun solvePartOne(lines: List<String>): Int {
 
 fun solvePartTwo(lines: List<String>): Int {
     return lines
+        .asSequence()
         .map(::readGame)
         .map(::findMinCubeSet)
         .map(::powerOfCubeSet)

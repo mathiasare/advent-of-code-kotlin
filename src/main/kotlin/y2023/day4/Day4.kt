@@ -4,10 +4,10 @@ import util.readFileLines
 import java.util.*
 
 fun main() {
-    dayFour()
+    day4()
 }
 
-fun dayFour() {
+fun day4() {
     val lines = readFileLines("inputD4")
     println("Part 1: " + solvePartOne(lines))
     println("Part 2: " + solvePartTwo(lines))

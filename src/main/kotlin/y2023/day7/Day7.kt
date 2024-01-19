@@ -20,10 +20,10 @@ val cardToValMapV2 = mapOf(
 )
 
 fun main() {
-    daySeven()
+    day7()
 }
 
-fun daySeven() {
+fun day7() {
     val lines = readFileLines("inputD7")
     println("Part 1: " + solvePartOne(lines))
     println("Part 2: " + solvePartTwo(lines))

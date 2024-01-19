@@ -15,10 +15,10 @@ val numTable: Map<String, String> = hashMapOf(
 )
 
 fun main() {
-    dayOne()
+    day1()
 }
 
-fun dayOne() {
+fun day1() {
     val lines = readFileLines("inputD1")
     println("Part 1: " + solvePartOne(lines))
     println("Part 2: " + solvePartTwo(lines))

@@ -1,12 +1,14 @@
 package y2023
 
-import y2023.day1.dayOne
-import y2023.day2.dayTwo
-import y2023.day3.dayThree
-import y2023.day4.dayFour
-import y2023.day5.dayFive
-import y2023.day6.daySix
-import y2023.day7.daySeven
+import y2023.day1.day1
+import y2023.day2.day2
+import y2023.day3.day3
+import y2023.day4.day4
+import y2023.day5.day5
+import y2023.day6.day6
+import y2023.day7.day7
+import y2023.day8.day8
+import y2023.day9.day9
 import java.time.Duration
 import java.time.Instant
 
@@ -19,13 +21,15 @@ fun main() {
     println("*".repeat(20))
 
     runAllDaysWithTime(
-        { dayOne() },
-        { dayTwo() },
-        { dayThree() },
-        { dayFour() },
-        { dayFive() },
-        { daySix() },
-        { daySeven() })
+        { day1() },
+        { day2() },
+        { day3() },
+        { day4() },
+        { day5() },
+        { day6() },
+        { day7() },
+        { day8() },
+        { day9() })
 }
 
 fun runAllDaysWithTime(vararg fns: () -> Unit) {
