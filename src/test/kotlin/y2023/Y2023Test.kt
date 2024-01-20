@@ -207,4 +207,28 @@ class Y2023Test {
             assertEquals(2L, y2023.day9.solvePartTwo(lines))
         }
     }
+
+    @Nested
+    @DisplayName("Day 10")
+    inner class Day10Test {
+
+        private lateinit var linesP1: List<String>
+        private lateinit var linesP2: List<String>
+
+        @BeforeTest
+        fun setup() {
+            linesP1 = readFileLines("d10p1test", true)
+            linesP2 = readFileLines("d10p2test", true)
+        }
+
+        @Test
+        fun testPart1() {
+            assertEquals(8, y2023.day10.solvePartOne(linesP1))
+        }
+
+        @Test
+        fun testPart2() {
+            assertEquals(10, y2023.day10.solvePartTwo(linesP2))
+        }
+    }
 }

@@ -76,7 +76,6 @@ fun countLottoCardsP2(lines: List<String>): Int {
             }
         }
     }
-
     return winsCount
 }
 

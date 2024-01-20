@@ -1,6 +1,7 @@
 package y2023
 
 import y2023.day1.day1
+import y2023.day10.day10
 import y2023.day2.day2
 import y2023.day3.day3
 import y2023.day4.day4
@@ -29,7 +30,8 @@ fun main() {
         { day6() },
         { day7() },
         { day8() },
-        { day9() })
+        { day9() },
+        { day10() })
 }
 
 fun runAllDaysWithTime(vararg fns: () -> Unit) {
