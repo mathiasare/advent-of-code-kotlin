@@ -231,4 +231,32 @@ class Y2023Test {
             assertEquals(10, y2023.day10.solvePartTwo(linesP2))
         }
     }
+
+    @Nested
+    @DisplayName("Day 11")
+    inner class Day11Test {
+
+        private lateinit var lines: List<String>
+
+        @BeforeTest
+        fun setup() {
+            lines = readFileLines("d11test", true)
+        }
+
+        @Test
+        fun testPart1() {
+            assertEquals(374L, y2023.day11.solvePartOne(lines))
+        }
+
+        @Test
+        fun testPart2() {
+            assertEquals(82000210L, y2023.day11.solvePartTwo(lines))
+        }
+
+        @Test
+        fun testPart2With100xMagnification() {
+            val galaxyMap = y2023.day11.readGalaxyMap(lines)
+            assertEquals(8410L, y2023.day11.findDistanceBetweenAllGalaxies(galaxyMap, 2))
+        }
+    }
 }

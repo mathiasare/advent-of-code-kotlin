@@ -1,0 +1,60 @@
+********************
+ADVENT OF CODE 2023
+Author: Mathias Are
+Language: Kotlin
+********************
+Day 1
+Part 1: 55712
+Part 2: 55445
+Executed in: 8ms
+********************
+Day 2
+Part 1: 2720
+Part 2: 71535
+Executed in: 2ms
+********************
+Day 3
+Part 1: 529618
+Part 2: 77509019
+Executed in: 7ms
+********************
+Day 4
+Part 1: 21919
+Part 2: 9881048
+Executed in: 191ms
+********************
+Day 5
+Part 1: 600279879
+Part 2: 20191102
+Executed in: 2882ms
+********************
+Day 6
+Part 1: 74698
+Part 2: 27563421
+Executed in: 1ms
+********************
+Day 7
+Part 1: 256448566
+Part 2: 254412181
+Executed in: 36ms
+********************
+Day 8
+Part 1: 17621
+Part 2: 20685524831999
+Executed in: 8ms
+********************
+Day 9
+Part 1: 1939607039
+Part 2: 1041
+Executed in: 4ms
+********************
+Day 10
+Part 1: 6640
+Part 2: 411
+Executed in: 287ms
+********************
+Day 11
+Part 1: 9274989
+Part 2: 357134560737
+Executed in: 35ms
+********************

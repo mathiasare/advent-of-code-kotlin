@@ -14,6 +14,8 @@ This repository contains my solutions to the [Advent of Code](https://adventofco
 ## Solutions
 ### [2023](./src/main/kotlin/y2023)
 
+## Answers and Time Measurements
+### [2023](./src/main/resources/results)
 
 ## Acknowledgments
 Thank you to the creators of Advent of Code for organizing this wonderful event and providing interesting challenges!
