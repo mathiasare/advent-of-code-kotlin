@@ -70,25 +70,34 @@ fun readGalaxyMap(lines: List<String>): GalaxyMap {
     return GalaxyMap(galaxies, xGaps, yGaps)
 }
 
-class GalaxyMap(val galaxyPos: List<Position>, val xGaps: Set<Long>, val yGaps: Set<Long>) {
+class GalaxyMap(val galaxyPos: List<Position>, private val xGaps: Set<Long>, private val yGaps: Set<Long>) {
 
     fun distanceBetweenGalaxies(galaxy1: Position, galaxy2: Position, magnificationLvl: Int = 0): Long {
         var distance = manhattanDistance(galaxy1, galaxy2)
-        val xGapCount =
-            xGaps.asSequence().filter { it > min(galaxy1.x, galaxy2.x) && it < max(galaxy1.x, galaxy2.x) }.count()
-        val yGapCount =
-            yGaps.asSequence().filter { it > min(galaxy1.y, galaxy2.y) && it < max(galaxy1.y, galaxy2.y) }.count()
 
-        val expansionMultiplier = 10.0.pow(magnificationLvl.toDouble()).toLong()
-
-        distance += (xGapCount * expansionMultiplier)
-        distance += (yGapCount * expansionMultiplier)
-
-        if (expansionMultiplier > 1) {
-            distance -= xGapCount
-            distance -= yGapCount
+        var expansionMultiplier = 1L
+        if (magnificationLvl > 0) {
+            expansionMultiplier = 10.0.pow(magnificationLvl.toDouble()).toLong() - 1
         }
+
+        val gapCount = countGapsBetweenGalaxies(galaxy1, galaxy2)
+
+        distance += gapCount * expansionMultiplier
         return distance
+    }
+
+    private fun countGapsBetweenGalaxies(galaxy1: Position, galaxy2: Position): Int {
+        val xGapCount =
+            xGaps.asSequence()
+                .filter { it > min(galaxy1.x, galaxy2.x) && it < max(galaxy1.x, galaxy2.x) }
+                .count()
+
+        val yGapCount =
+            yGaps.asSequence()
+                .filter { it > min(galaxy1.y, galaxy2.y) && it < max(galaxy1.y, galaxy2.y) }
+                .count()
+
+        return xGapCount + yGapCount
     }
 
     private fun manhattanDistance(a: Position, b: Position) = abs(a.x - b.x) + abs(a.y - b.y)
